@@ -14,10 +14,6 @@ Topic demoestrate in this application
 ##### * Alamofire
 ##### * MVVM
 
-##  Picture says a thousand words
----
-
-![Alt text](https://github.com/amrangry/iCar/blob/master/Media/project_demo_gif.gif?raw=true "sample")
 
 ## Environment
 ---
