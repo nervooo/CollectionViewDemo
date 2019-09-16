@@ -1,0 +1,20 @@
+PODS:
+  - Alamofire (4.8.2)
+  - Parchment (1.6.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.8.2)
+  - Parchment
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Parchment
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  Parchment: d3a7b367c529fa6ef51aa43f5717a7ff36d4b1f5
+
+PODFILE CHECKSUM: 82c3e1ca6f2a0c2c3d5d324df252ce7ff8ff85d6
+
+COCOAPODS: 1.7.5
