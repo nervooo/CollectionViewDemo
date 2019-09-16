@@ -1,14 +1,9 @@
 
 
-# Restuarant
-Restaurant Menu 
-
-<p align="center">
-  <img src ="https:/blob/master/Media/project-logo-png.png?raw=true"/>
-</p>
+# CollectionView
 
 
-## Demo for displaying Cars On MapKit And TableView
+## Demo for displaying CollectionView And TableView
 
 
 Topic demoestrate in this application
@@ -83,9 +78,7 @@ Copyright 2018 Amr Elghadban
 ---
 #### If you wish to contact me
 
-WebSite: [https://amrangry.github.io/](https://amrangry.github.io/)
-
-Email : amr.elghadban@gmail.com
+Email : nervanaadel89@gmail.com
 
 
 
@@ -93,7 +86,6 @@ Email : amr.elghadban@gmail.com
 
 When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
 
 ---
 
