@@ -13,8 +13,9 @@ class EventTypeViewController: UIViewController {
     
     let options = ["الحجوزات","التقويم"]
     var pagingViewController = PagingViewController<PagingIndexItem>()
-    @IBOutlet var dayTableView: UITableView!
-    @IBOutlet var priceCollectionView: UICollectionView!
+    @IBOutlet weak var dayTableView: UITableView?
+    @IBOutlet weak var priceCollectionView: UICollectionView?
+    @IBOutlet weak var optionsView: UIView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +24,11 @@ class EventTypeViewController: UIViewController {
         setTabsPager()
         fetchData()
 
-        priceCollectionView.semanticContentAttribute = UISemanticContentAttribute.forceRightToLeft
+        priceCollectionView?.semanticContentAttribute = UISemanticContentAttribute.forceRightToLeft
 
-        priceCollectionView.register(UINib(nibName: "TitleCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "TitleCollectionViewCell")
+        priceCollectionView?.register(UINib(nibName: "TitleCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "TitleCollectionViewCell")
 
-        priceCollectionView.register(UINib(nibName: "PriceCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "PriceCollectionViewCell")
+        priceCollectionView?.register(UINib(nibName: "PriceCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "PriceCollectionViewCell")
 
     }
     
@@ -35,7 +36,7 @@ class EventTypeViewController: UIViewController {
         pagingViewController.dataSource = self
         // Add the paging view controller as a child view controller and
         addChild(pagingViewController)
-        view.addSubview(pagingViewController.view)
+        optionsView?.addSubview(pagingViewController.view)
         pagingViewController.view.translatesAutoresizingMaskIntoConstraints = false
         pagingViewController.didMove(toParent: self)
         pagingViewController.indicatorColor = UIColor.tintColor!
@@ -46,10 +47,10 @@ class EventTypeViewController: UIViewController {
         pagingViewController.collectionView.isPagingEnabled = false
         
         NSLayoutConstraint.activate([
-            pagingViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            pagingViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            pagingViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            pagingViewController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 90)
+            pagingViewController.view.leadingAnchor.constraint(equalTo: optionsView!.leadingAnchor),
+            pagingViewController.view.trailingAnchor.constraint(equalTo: optionsView!.trailingAnchor),
+            pagingViewController.view.bottomAnchor.constraint(equalTo: optionsView!.bottomAnchor),
+            pagingViewController.view.topAnchor.constraint(equalTo: optionsView!.topAnchor)
             ])
     }
     
@@ -60,13 +61,12 @@ class EventTypeViewController: UIViewController {
             switch response {
             case .success(let result):
                 guard let jsonData = result as? Data else {
-                    //self.completion(.failure(NetworkErrorCodeForResponse.errorInParsingResponse))
                     return
                 }
-                print(jsonData)
+                let aPIDataResponse = try? JSONDecoder().decode(APIDataResponse.self, from: jsonData)
+                print(aPIDataResponse)
             case .failure(let error):
                 print(error.localizedDescription)
-                // self.completion(.failure(error))
             }
         }
     }
@@ -107,7 +107,7 @@ extension EventTypeViewController : UITableViewDelegate, UITableViewDataSource {
 extension EventTypeViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 50
+        return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

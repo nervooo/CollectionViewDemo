@@ -10,9 +10,9 @@ import UIKit
 
 class DayCellTableViewCell: UITableViewCell {
 
-    @IBOutlet var dayLabel: UILabel!
-    @IBOutlet var dateLabel: UILabel!
-    @IBOutlet var dateHijriLabel: UILabel!
+    @IBOutlet weak var dayLabel: UILabel?
+    @IBOutlet weak var dateLabel: UILabel?
+    @IBOutlet weak var dateHijriLabel: UILabel?
 
     override func awakeFromNib() {
         super.awakeFromNib()

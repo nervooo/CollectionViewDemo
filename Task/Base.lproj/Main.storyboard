@@ -33,18 +33,18 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="السبت" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkm-65-eag">
-                                                    <rect key="frame" x="56.5" y="10" width="37" height="17"/>
+                                                    <rect key="frame" x="31.5" y="10" width="37" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1441/01/15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rd5-fR-YF5">
-                                                    <rect key="frame" x="47" y="35" width="56.5" height="13.5"/>
+                                                    <rect key="frame" x="22" y="35" width="56.5" height="13.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019/09/14" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1A-kC-DD1">
-                                                    <rect key="frame" x="45" y="56.5" width="60" height="13.5"/>
+                                                    <rect key="frame" x="20" y="56.5" width="60" height="13.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -72,7 +72,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="GXK-pc-3Zh"/>
                                 </connections>
                             </tableView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Sr-zP-XlI">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Sr-zP-XlI">
                                 <rect key="frame" x="20" y="138" width="284" height="624"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ryo-yS-mMh">
@@ -96,15 +96,23 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="5Ua-JL-cEf"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g4O-cd-cKU">
+                                <rect key="frame" x="0.0" y="88" width="414" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="g4O-cd-cKU" secondAttribute="trailing" id="CJI-uv-IQu"/>
                             <constraint firstItem="z0v-Ai-hBI" firstAttribute="leading" secondItem="3Sr-zP-XlI" secondAttribute="trailing" id="IMX-PN-2WU"/>
                             <constraint firstItem="3Sr-zP-XlI" firstAttribute="top" secondItem="z0v-Ai-hBI" secondAttribute="top" id="VFV-7u-rad"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="z0v-Ai-hBI" secondAttribute="bottom" constant="100" id="VqV-B2-C9w"/>
                             <constraint firstItem="z0v-Ai-hBI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="XAb-A6-n0z"/>
+                            <constraint firstItem="g4O-cd-cKU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="YDm-Ye-XHX"/>
                             <constraint firstItem="3Sr-zP-XlI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="bLe-L1-zzc"/>
                             <constraint firstItem="3Sr-zP-XlI" firstAttribute="height" secondItem="z0v-Ai-hBI" secondAttribute="height" id="hGd-SC-Mqn"/>
+                            <constraint firstItem="3Sr-zP-XlI" firstAttribute="top" secondItem="g4O-cd-cKU" secondAttribute="bottom" id="lSK-yb-z6W"/>
+                            <constraint firstItem="g4O-cd-cKU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nIT-BT-8OE"/>
                             <constraint firstItem="z0v-Ai-hBI" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-10" id="uuA-Ro-oPr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -119,6 +127,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dayTableView" destination="z0v-Ai-hBI" id="PKW-eZ-WvM"/>
+                        <outlet property="optionsView" destination="g4O-cd-cKU" id="JQO-J5-SjA"/>
                         <outlet property="priceCollectionView" destination="3Sr-zP-XlI" id="O88-h0-ggh"/>
                     </connections>
                 </viewController>

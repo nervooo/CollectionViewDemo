@@ -10,7 +10,7 @@ import UIKit
 
 class TitleCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet var chaletUnitTitleLabel: UILabel!
+    @IBOutlet weak var chaletUnitTitleLabel: UILabel?
 
     override func awakeFromNib() {
         super.awakeFromNib()

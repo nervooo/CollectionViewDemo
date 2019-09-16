@@ -8,29 +8,29 @@
 
 import Foundation
 
-// MARK: - Welcome
-struct Welcome: Codable {
-    let data: DataClass
+// MARK: - APIDataResponse
+struct APIDataResponse: Codable {
+    let data: DataInfo?
 }
 
-// MARK: - DataClass
-struct DataClass: Codable {
-    let chalets: [Chalet]
-    let dates: [DateElement]
-    let notifications: Int
+// MARK: - DataInfo
+struct DataInfo: Codable {
+    let chalets: [Chalet]?
+    let dates: [DateElement]?
+    let notifications: Int?
 }
 
 // MARK: - Chalet
 struct Chalet: Codable {
-    let id, title, published, status: String
-    let units: [Unit]
+    let id, title, published, status: String?
+    let units: [Unit]?
 }
 
 // MARK: - Unit
 struct Unit: Codable {
-    let id, chaletID, title, capacity: String
+    let id, chaletID, title, capacity: String?
     let code: String?
-    let weekDays: [WeekDay]
+    let weekDays: [WeekDay]?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -41,11 +41,11 @@ struct Unit: Codable {
 
 // MARK: - WeekDay
 struct WeekDay: Codable {
-    let id, unitID, chaletID, label: String
-    let name, price, discount, pdate: String
-    let isReserved: String
+    let id, unitID, chaletID, label: String?
+    let name, price, discount, pdate: String?
+    let isReserved: String?
     let reservationID, type, status: JSONNull?
-    let customPrice, hasOffer: Int
+    let customPrice, hasOffer: Int?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -62,8 +62,8 @@ struct WeekDay: Codable {
 
 // MARK: - DateElement
 struct DateElement: Codable {
-    let dayLabel, date, datef, hjri: String
-    let enLabel: String
+    let dayLabel, date, datef, hjri: String?
+    let enLabel: String?
 }
 
 // MARK: - Encode/decode helpers

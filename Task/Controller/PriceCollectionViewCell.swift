@@ -10,7 +10,7 @@ import UIKit
 
 class PriceCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet var chaletUnitPriceLabel: UILabel!
+    @IBOutlet weak var chaletUnitPriceLabel: UILabel?
 
     override func awakeFromNib() {
         super.awakeFromNib()

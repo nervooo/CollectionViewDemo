@@ -13,7 +13,7 @@
 		54114604232E1E5D003E6A31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54114602232E1E5D003E6A31 /* Main.storyboard */; };
 		54114606232E1E5E003E6A31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54114605232E1E5E003E6A31 /* Assets.xcassets */; };
 		54114609232E1E5E003E6A31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54114607232E1E5E003E6A31 /* LaunchScreen.storyboard */; };
-		54114612232E35FB003E6A31 /* Chalet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54114611232E35FB003E6A31 /* Chalet.swift */; };
+		54114612232E35FB003E6A31 /* APIDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54114611232E35FB003E6A31 /* APIDataResponse.swift */; };
 		54114615232E3AF7003E6A31 /* APIClientRequestForURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54114614232E3AF7003E6A31 /* APIClientRequestForURLSession.swift */; };
 		54114617232E3B26003E6A31 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54114616232E3B26003E6A31 /* URLSessionProtocol.swift */; };
 		5411461A232E3C96003E6A31 /* TypeAlias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54114619232E3C96003E6A31 /* TypeAlias.swift */; };
@@ -38,7 +38,7 @@
 		54114605232E1E5E003E6A31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54114608232E1E5E003E6A31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5411460A232E1E5E003E6A31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		54114611232E35FB003E6A31 /* Chalet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chalet.swift; sourceTree = "<group>"; };
+		54114611232E35FB003E6A31 /* APIDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDataResponse.swift; sourceTree = "<group>"; };
 		54114614232E3AF7003E6A31 /* APIClientRequestForURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientRequestForURLSession.swift; sourceTree = "<group>"; };
 		54114616232E3B26003E6A31 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		54114619232E3C96003E6A31 /* TypeAlias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeAlias.swift; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 		54114610232E35DF003E6A31 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				54114611232E35FB003E6A31 /* Chalet.swift */,
+				54114611232E35FB003E6A31 /* APIDataResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -288,7 +288,7 @@
 				54114617232E3B26003E6A31 /* URLSessionProtocol.swift in Sources */,
 				54114601232E1E5D003E6A31 /* ViewController.swift in Sources */,
 				54114620232E3D3D003E6A31 /* NetworkErrorCodeForResponse.swift in Sources */,
-				54114612232E35FB003E6A31 /* Chalet.swift in Sources */,
+				54114612232E35FB003E6A31 /* APIDataResponse.swift in Sources */,
 				54114615232E3AF7003E6A31 /* APIClientRequestForURLSession.swift in Sources */,
 				541145FF232E1E5D003E6A31 /* AppDelegate.swift in Sources */,
 				54114622232F99F9003E6A31 /* EventTypeViewController.swift in Sources */,
