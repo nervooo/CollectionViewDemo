@@ -44,7 +44,7 @@ struct WeekDay: Codable {
     let id, unitID, chaletID, label: String?
     let name, price, discount, pdate: String?
     let isReserved: String?
-    let reservationID, type, status: JSONNull?
+    let reservationID, type, status: String?
     let customPrice, hasOffer: Int?
     
     enum CodingKeys: String, CodingKey {
@@ -64,31 +64,4 @@ struct WeekDay: Codable {
 struct DateElement: Codable {
     let dayLabel, date, datef, hjri: String?
     let enLabel: String?
-}
-
-// MARK: - Encode/decode helpers
-
-class JSONNull: Codable, Hashable {
-    
-    public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
-        return true
-    }
-    
-    public var hashValue: Int {
-        return 0
-    }
-    
-    public init() {}
-    
-    public required init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if !container.decodeNil() {
-            throw DecodingError.typeMismatch(JSONNull.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))
-        }
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encodeNil()
-    }
 }

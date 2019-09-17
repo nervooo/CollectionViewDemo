@@ -26,6 +26,11 @@
 		5411462E232FB95C003E6A31 /* TitleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5411462C232FB95C003E6A31 /* TitleCollectionViewCell.xib */; };
 		54114631232FB96A003E6A31 /* PriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411462F232FB96A003E6A31 /* PriceCollectionViewCell.swift */; };
 		54114632232FB96A003E6A31 /* PriceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54114630232FB96A003E6A31 /* PriceCollectionViewCell.xib */; };
+		541146342330D8F4003E6A31 /* UnitsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541146332330D8F4003E6A31 /* UnitsTableViewCell.swift */; };
+		541146362330E860003E6A31 /* UnitsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541146352330E860003E6A31 /* UnitsHeaderView.swift */; };
+		541146382330E873003E6A31 /* UnitsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 541146372330E873003E6A31 /* UnitsHeaderView.xib */; };
+		5411463A2330EB18003E6A31 /* DayHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541146392330EB18003E6A31 /* DayHeaderView.swift */; };
+		5411463C2330EB5B003E6A31 /* DayHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5411463B2330EB5B003E6A31 /* DayHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +56,11 @@
 		5411462C232FB95C003E6A31 /* TitleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleCollectionViewCell.xib; sourceTree = "<group>"; };
 		5411462F232FB96A003E6A31 /* PriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollectionViewCell.swift; sourceTree = "<group>"; };
 		54114630232FB96A003E6A31 /* PriceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceCollectionViewCell.xib; sourceTree = "<group>"; };
+		541146332330D8F4003E6A31 /* UnitsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsTableViewCell.swift; sourceTree = "<group>"; };
+		541146352330E860003E6A31 /* UnitsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsHeaderView.swift; sourceTree = "<group>"; };
+		541146372330E873003E6A31 /* UnitsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnitsHeaderView.xib; sourceTree = "<group>"; };
+		541146392330EB18003E6A31 /* DayHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayHeaderView.swift; sourceTree = "<group>"; };
+		5411463B2330EB5B003E6A31 /* DayHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayHeaderView.xib; sourceTree = "<group>"; };
 		B36B2E4DD534E48712D79F26 /* Pods-Task.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Task.release.xcconfig"; path = "Target Support Files/Pods-Task/Pods-Task.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +164,11 @@
 				5411462C232FB95C003E6A31 /* TitleCollectionViewCell.xib */,
 				5411462F232FB96A003E6A31 /* PriceCollectionViewCell.swift */,
 				54114630232FB96A003E6A31 /* PriceCollectionViewCell.xib */,
+				541146332330D8F4003E6A31 /* UnitsTableViewCell.swift */,
+				541146352330E860003E6A31 /* UnitsHeaderView.swift */,
+				541146372330E873003E6A31 /* UnitsHeaderView.xib */,
+				541146392330EB18003E6A31 /* DayHeaderView.swift */,
+				5411463B2330EB5B003E6A31 /* DayHeaderView.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -228,9 +243,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				54114609232E1E5E003E6A31 /* LaunchScreen.storyboard in Resources */,
+				541146382330E873003E6A31 /* UnitsHeaderView.xib in Resources */,
 				5411462E232FB95C003E6A31 /* TitleCollectionViewCell.xib in Resources */,
 				54114606232E1E5E003E6A31 /* Assets.xcassets in Resources */,
 				54114604232E1E5D003E6A31 /* Main.storyboard in Resources */,
+				5411463C2330EB5B003E6A31 /* DayHeaderView.xib in Resources */,
 				54114632232FB96A003E6A31 /* PriceCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,11 +301,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5411463A2330EB18003E6A31 /* DayHeaderView.swift in Sources */,
 				5411461A232E3C96003E6A31 /* TypeAlias.swift in Sources */,
 				54114617232E3B26003E6A31 /* URLSessionProtocol.swift in Sources */,
 				54114601232E1E5D003E6A31 /* ViewController.swift in Sources */,
+				541146362330E860003E6A31 /* UnitsHeaderView.swift in Sources */,
 				54114620232E3D3D003E6A31 /* NetworkErrorCodeForResponse.swift in Sources */,
 				54114612232E35FB003E6A31 /* APIDataResponse.swift in Sources */,
+				541146342330D8F4003E6A31 /* UnitsTableViewCell.swift in Sources */,
 				54114615232E3AF7003E6A31 /* APIClientRequestForURLSession.swift in Sources */,
 				541145FF232E1E5D003E6A31 /* AppDelegate.swift in Sources */,
 				54114622232F99F9003E6A31 /* EventTypeViewController.swift in Sources */,

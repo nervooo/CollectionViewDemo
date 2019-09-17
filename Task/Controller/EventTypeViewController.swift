@@ -13,9 +13,10 @@ class EventTypeViewController: UIViewController {
     
     let options = ["الحجوزات","التقويم"]
     var pagingViewController = PagingViewController<PagingIndexItem>()
-    @IBOutlet weak var dayTableView: UITableView?
-    @IBOutlet weak var priceCollectionView: UICollectionView?
+    @IBOutlet weak var unitTableView: UITableView?
     @IBOutlet weak var optionsView: UIView?
+    var dataSourceForDateElement = [DateElement]()
+    let unitsTableViewCell = UnitsTableViewCell()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +25,18 @@ class EventTypeViewController: UIViewController {
         setTabsPager()
         fetchData()
 
-        priceCollectionView?.semanticContentAttribute = UISemanticContentAttribute.forceRightToLeft
+        let nib = UINib(nibName: "UnitsHeaderView", bundle: nil)
+        unitTableView?.register(nib, forHeaderFooterViewReuseIdentifier: "UnitsHeaderView")
+        
+        let dateNib = UINib(nibName: "DayHeaderView", bundle: nil)
+        unitsTableViewCell.dayTableView?.register(dateNib, forHeaderFooterViewReuseIdentifier: "DayHeaderView")
 
-        priceCollectionView?.register(UINib(nibName: "TitleCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "TitleCollectionViewCell")
+        unitsTableViewCell.priceCollectionView?.semanticContentAttribute = UISemanticContentAttribute.forceRightToLeft
 
-        priceCollectionView?.register(UINib(nibName: "PriceCollectionViewCell", bundle: .main), forCellWithReuseIdentifier: "PriceCollectionViewCell")
+        unitsTableViewCell.priceCollectionView?.register(UINib(nibName: "TitleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TitleCollectionViewCell")
+
+        unitsTableViewCell.priceCollectionView?.register(UINib(nibName: "PriceCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PriceCollectionViewCell")
+        unitsTableViewCell.priceCollectionView?.reloadData()
 
     }
     
@@ -64,7 +72,8 @@ class EventTypeViewController: UIViewController {
                     return
                 }
                 let aPIDataResponse = try? JSONDecoder().decode(APIDataResponse.self, from: jsonData)
-                print(aPIDataResponse)
+                self.dataSourceForDateElement = aPIDataResponse?.data?.dates ?? []
+                self.unitsTableViewCell.dayTableView?.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -89,18 +98,61 @@ extension EventTypeViewController : PagingViewControllerDataSource {
 
 extension EventTypeViewController : UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if tableView == unitTableView {
+            return 5
+        } else {
+            return 1
+        }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:DayCellTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as! DayCellTableViewCell
-        
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == unitTableView {
+            return 1
+        } else {
+            return dataSourceForDateElement.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if tableView == unitTableView {
+        let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "UnitsHeaderView")
+        //let header = cell as? UnitsHeaderView
         return cell
+        }  else {
+            let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "DayHeaderView")
+            //let header = cell as? DayHeaderView
+            return cell
+        }
+    }
+
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if tableView == unitTableView {
+            let cell:UnitsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "UnitsTableViewCell", for: indexPath) as! UnitsTableViewCell
+            return cell
+        } else {
+            let cell:DayCellTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as! DayCellTableViewCell
+            let object = dataSourceForDateElement[indexPath.row]
+            cell.dayLabel?.text = object.dayLabel
+            cell.dateHijriLabel?.text = object.hjri
+            cell.dateLabel?.text = object.date
+            return cell
+            
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        if tableView == unitTableView {
+            return 620
+        } else {
+           return 80
+        }
     }
 }
 
@@ -119,18 +171,14 @@ extension EventTypeViewController : UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell : TitleCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TitleCollectionViewCell", for: indexPath) as! TitleCollectionViewCell
-        let cell2 : PriceCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PriceCollectionViewCell", for: indexPath) as! PriceCollectionViewCell
+        let titleCell : TitleCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TitleCollectionViewCell", for: indexPath) as! TitleCollectionViewCell
+        let priceCell : PriceCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PriceCollectionViewCell", for: indexPath) as! PriceCollectionViewCell
 
         
         if indexPath.row == 0 {
-            
-            return cell
-
+            return titleCell
         } else {
-            
-            return cell2
-            
+            return priceCell
         }
     }
     
