@@ -45,7 +45,8 @@ struct WeekDay: Codable {
     let name, price, discount, pdate: String?
     let isReserved: String?
     let reservationID, type, status: String?
-    let customPrice, hasOffer: Int?
+    let customPrice: String?
+    let hasOffer: Int?
     
     enum CodingKeys: String, CodingKey {
         case id

@@ -11,33 +11,21 @@ import Parchment
 
 class EventTypeViewController: UIViewController {
     
-    let options = ["الحجوزات","التقويم"]
+    let options = ["الحجوزات" ,"التقويم"]
     var pagingViewController = PagingViewController<PagingIndexItem>()
     @IBOutlet weak var unitTableView: UITableView?
     @IBOutlet weak var optionsView: UIView?
-    var dataSourceForDateElement = [DateElement]()
-    let unitsTableViewCell = UnitsTableViewCell()
-
+    @IBOutlet weak var loaderIndicator: UIActivityIndicatorView!
+    var chalets = [Chalet]()
+    var weekDays = [DateElement]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-       // fetchData()
+        loaderIndicator.startAnimating()
         setTabsPager()
         fetchData()
-
-        let nib = UINib(nibName: "UnitsHeaderView", bundle: nil)
-        unitTableView?.register(nib, forHeaderFooterViewReuseIdentifier: "UnitsHeaderView")
-        
-        let dateNib = UINib(nibName: "DayHeaderView", bundle: nil)
-        unitsTableViewCell.dayTableView?.register(dateNib, forHeaderFooterViewReuseIdentifier: "DayHeaderView")
-
-        unitsTableViewCell.priceCollectionView?.semanticContentAttribute = UISemanticContentAttribute.forceRightToLeft
-
-        unitsTableViewCell.priceCollectionView?.register(UINib(nibName: "TitleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TitleCollectionViewCell")
-
-        unitsTableViewCell.priceCollectionView?.register(UINib(nibName: "PriceCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PriceCollectionViewCell")
-        unitsTableViewCell.priceCollectionView?.reloadData()
-
+        let nib = UINib(nibName: UnitsHeaderView.identifier, bundle: nil)
+        unitTableView?.register(nib, forHeaderFooterViewReuseIdentifier: UnitsHeaderView.identifier)
     }
     
     func setTabsPager() {
@@ -65,20 +53,24 @@ class EventTypeViewController: UIViewController {
     func fetchData() {
         var httpHeader: [String: String] = [:]
         httpHeader.updateValue("application/x-www-form-urlencoded", forKey: "Content-Type")
-        APIClinet().invokeGetURL(urlString: "https://gathern.co/api/vb/provider/reservation/calender?access-token=cK25Bbg3NJrdT5-XzVV2mTrOcV_U-tpBgqIpe8qS&page=1", parameters: nil, httpHeader: httpHeader, cashing: true) { response in
+        APIClinet().invokeGetURL(urlString: Constants.APIUrl, parameters: nil, httpHeader: httpHeader, cashing: true) { response in
             switch response {
             case .success(let result):
                 guard let jsonData = result as? Data else {
                     return
                 }
                 let aPIDataResponse = try? JSONDecoder().decode(APIDataResponse.self, from: jsonData)
-                self.dataSourceForDateElement = aPIDataResponse?.data?.dates ?? []
-                self.unitsTableViewCell.dayTableView?.reloadData()
+                self.weekDays = aPIDataResponse?.data?.dates ?? []
+                self.chalets = aPIDataResponse?.data?.chalets ?? []
+                self.unitTableView?.reloadData()
+               // self.loaderIndicator.stopAnimating()
+                self.loaderIndicator.isHidden = true
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
+    var currentExpandedSection: Int?
 }
 
 extension EventTypeViewController : PagingViewControllerDataSource {
@@ -96,90 +88,53 @@ extension EventTypeViewController : PagingViewControllerDataSource {
     
 }
 
-extension EventTypeViewController : UITableViewDelegate, UITableViewDataSource {
+extension EventTypeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if tableView == unitTableView {
-            return 5
-        } else {
-            return 1
-        }
+        return chalets.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == unitTableView {
-            return 1
-        } else {
-            return dataSourceForDateElement.count
-        }
+        return 1
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44.0
+        return Constants.heightForHeader
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if tableView == unitTableView {
-        let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "UnitsHeaderView")
-        //let header = cell as? UnitsHeaderView
-        return cell
-        }  else {
-            let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "DayHeaderView")
-            //let header = cell as? DayHeaderView
-            return cell
+        let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: UnitsHeaderView.identifier) as? UnitsHeaderView
+        let chalet = chalets[section]
+        cell?.chaletTitleLabel?.text = chalet.title
+        cell?.callBack = { [weak self] result in
+            print(result ?? false)
+            if let previousExpandedIndex = self?.currentExpandedSection {
+                let previousExpandedView = self?.unitTableView?.headerView(forSection: previousExpandedIndex) as? UnitsHeaderView
+                previousExpandedView?.updateUI("-")
+            }
+            self?.currentExpandedSection = section
+            self?.unitTableView?.reloadData()
         }
+        return cell
     }
-
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if tableView == unitTableView {
-            let cell:UnitsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "UnitsTableViewCell", for: indexPath) as! UnitsTableViewCell
-            return cell
-        } else {
-            let cell:DayCellTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath) as! DayCellTableViewCell
-            let object = dataSourceForDateElement[indexPath.row]
-            cell.dayLabel?.text = object.dayLabel
-            cell.dateHijriLabel?.text = object.hjri
-            cell.dateLabel?.text = object.date
-            return cell
-            
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: UnitsTableViewCell.identifier, for: indexPath) as? UnitsTableViewCell else {
+            return UITableViewCell()
         }
+        cell.weekDays = weekDays
+        cell.unites = chalets[indexPath.section].units ?? [Unit]()
+        cell.viewController = self
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView == unitTableView {
-            return 620
+        let sectionIndex = indexPath.section
+        if sectionIndex == currentExpandedSection {
+            return Constants.heightForHeader + (Constants.dayCellHeight * 7)
         } else {
-           return 80
+            return 0
         }
     }
-}
-
-extension EventTypeViewController : UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 7
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        let titleCell : TitleCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TitleCollectionViewCell", for: indexPath) as! TitleCollectionViewCell
-        let priceCell : PriceCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PriceCollectionViewCell", for: indexPath) as! PriceCollectionViewCell
-
-        
-        if indexPath.row == 0 {
-            return titleCell
-        } else {
-            return priceCell
-        }
-    }
-    
 }

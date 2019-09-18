@@ -31,12 +31,22 @@
                             <color key="textColor" red="0.091565035283565521" green="0.45449721813201904" blue="0.8941614031791687" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrx-pF-eRg">
+                            <rect key="frame" x="0.0" y="0.0" width="461" height="80"/>
+                            <connections>
+                                <action selector="expandCollapseButtonPressed:" destination="q38-ov-8EM" eventType="touchUpInside" id="YB5-xc-5iF"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="hrx-pF-eRg" firstAttribute="top" secondItem="m2R-ak-D99" secondAttribute="top" id="2xx-QA-vos"/>
                         <constraint firstItem="bss-dC-ZKg" firstAttribute="centerY" secondItem="hNW-eg-Nzk" secondAttribute="centerY" id="3Md-yt-qcH"/>
+                        <constraint firstAttribute="trailing" secondItem="hrx-pF-eRg" secondAttribute="trailing" id="43W-t9-4h7"/>
                         <constraint firstAttribute="trailing" secondItem="hNW-eg-Nzk" secondAttribute="trailing" constant="25" id="AIT-OB-LQv"/>
                         <constraint firstItem="hNW-eg-Nzk" firstAttribute="centerY" secondItem="m2R-ak-D99" secondAttribute="centerY" id="Jc4-7t-HTD"/>
+                        <constraint firstAttribute="bottom" secondItem="hrx-pF-eRg" secondAttribute="bottom" id="av4-xU-tQn"/>
+                        <constraint firstItem="hrx-pF-eRg" firstAttribute="leading" secondItem="m2R-ak-D99" secondAttribute="leading" id="diQ-dz-uHP"/>
                         <constraint firstItem="bss-dC-ZKg" firstAttribute="leading" secondItem="m2R-ak-D99" secondAttribute="leading" constant="20" id="wLi-en-q1N"/>
                     </constraints>
                 </view>
@@ -52,10 +62,10 @@
             <viewLayoutGuide key="safeArea" id="pqX-96-yGG"/>
             <connections>
                 <outlet property="chaletTitleLabel" destination="hNW-eg-Nzk" id="PhR-XO-OC3"/>
+                <outlet property="expandCollapseButton" destination="hrx-pF-eRg" id="P3l-8i-C7f"/>
                 <outlet property="expandLabel" destination="bss-dC-ZKg" id="TwL-Jf-UQF"/>
-                <outlet property="sectionHeaderTitle" destination="hNW-eg-Nzk" id="HH9-IC-I3i"/>
             </connections>
-            <point key="canvasLocation" x="282" y="-151"/>
+            <point key="canvasLocation" x="281.8840579710145" y="-151.33928571428569"/>
         </view>
     </objects>
 </document>

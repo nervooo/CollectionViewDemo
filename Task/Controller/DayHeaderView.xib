@@ -16,14 +16,14 @@
             <rect key="frame" x="0.0" y="0.0" width="100" height="68"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3N1-2O-mVw">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3N1-2O-mVw">
                     <rect key="frame" x="0.0" y="0.0" width="100" height="68"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="4Od-DA-eXb">
                             <rect key="frame" x="41" y="25" width="18" height="18"/>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" red="0.091565035279999998" green="0.45449721809999999" blue="0.89416140320000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" red="0.090196078431372548" green="0.45490196078431372" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstItem="4Od-DA-eXb" firstAttribute="centerX" secondItem="3N1-2O-mVw" secondAttribute="centerX" id="gOd-w6-zra"/>
                         <constraint firstItem="4Od-DA-eXb" firstAttribute="centerY" secondItem="3N1-2O-mVw" secondAttribute="centerY" id="h7S-oE-y3Z"/>
@@ -39,7 +39,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="02j-rn-K8E"/>
-            <point key="canvasLocation" x="11.594202898550726" y="-170.42410714285714"/>
+            <point key="canvasLocation" x="11.594202898550726" y="-170.75892857142856"/>
         </view>
     </objects>
     <resources>
