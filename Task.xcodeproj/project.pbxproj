@@ -109,6 +109,8 @@
 		541145FD232E1E5D003E6A31 /* Task */ = {
 			isa = PBXGroup;
 			children = (
+				549184AF23376D4800B9D52C /* New Group1 */,
+				549184AC233769D500B9D52C /* New Group */,
 				54114626232FADD6003E6A31 /* Controller */,
 				54114623232FA060003E6A31 /* Extension */,
 				54114618232E3C74003E6A31 /* Helper */,
@@ -164,6 +166,14 @@
 		54114626232FADD6003E6A31 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				549184AE23376A8B00B9D52C /* New Group7 */,
+				549184AD233769F000B9D52C /* New Group6 */,
+				549184AB233769C400B9D52C /* New Group5 */,
+				549184AA233769A800B9D52C /* New Group4 */,
+				541146442337696E003E6A31 /* New Group3 */,
+				5411464323376960003E6A31 /* New Group2 */,
+				5411464223376957003E6A31 /* New Group1 */,
+				541146412337694E003E6A31 /* New Group */,
 				54114621232F99F9003E6A31 /* EventTypeViewController.swift */,
 				54114627232FAE09003E6A31 /* DayCellTableViewCell.swift */,
 				5411462B232FB95C003E6A31 /* TitleCollectionViewCell.swift */,
@@ -177,6 +187,76 @@
 				5411463B2330EB5B003E6A31 /* DayHeaderView.xib */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		541146412337694E003E6A31 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		5411464223376957003E6A31 /* New Group1 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group1";
+			sourceTree = "<group>";
+		};
+		5411464323376960003E6A31 /* New Group2 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group2";
+			sourceTree = "<group>";
+		};
+		541146442337696E003E6A31 /* New Group3 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group3";
+			sourceTree = "<group>";
+		};
+		549184AA233769A800B9D52C /* New Group4 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group4";
+			sourceTree = "<group>";
+		};
+		549184AB233769C400B9D52C /* New Group5 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group5";
+			sourceTree = "<group>";
+		};
+		549184AC233769D500B9D52C /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		549184AD233769F000B9D52C /* New Group6 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group6";
+			sourceTree = "<group>";
+		};
+		549184AE23376A8B00B9D52C /* New Group7 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group7";
+			sourceTree = "<group>";
+		};
+		549184AF23376D4800B9D52C /* New Group1 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group1";
 			sourceTree = "<group>";
 		};
 		DB65A1B4342BC77BE23D304E /* Pods */ = {
